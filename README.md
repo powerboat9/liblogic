@@ -1,0 +1,2 @@
+# liblogic
+A logic library
