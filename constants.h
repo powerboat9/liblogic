@@ -38,68 +38,69 @@
 #define isDEF(n) ((n->type >= DEF_IF) && (n->type <= DEF_SAVEVAR))
 #define isStdDEF(n) ((n->type >= DEF_IF) && (n->type < DEF_SAVEVAR))
 struct node {
-    char *last;
+    void *last;
     char type;
 }
 
 #define isNodeChain(n) (n->type < 2)
 struct node_id_chain { /* sets and simple adjectives */
-    char *last;
+    void *last;
     char type;
     unsigned long id;
-    char *adj;
+    void *next;
 }
 
 struct node_str {
-    char *last;
+    void *last;
     char type;
     char *data;
 }
 
+#define isNodeEnd(n) ((n->type >= TYPE_LONG) && (n->type <= TYPE_LOADVAR))
 #define isNodeNum(n) ((n->type >= TYPE_LONG) && (n->type <= TYPE_DOUBLE))
 struct node_snum {
-    char *last;
+    void *last;
     char type;
     long n;
 }
 
 struct node_unum {
-    char *last;
+    void *last;
     char type;
     unsigned long n;
 }
 
 struct node_dnum {
-    char *last;
+    void *last;
     char type;
     double n;
 }
 
 struct node_load {
-    char *last;
+    void *last;
     char type;
     unsigned long varID;
 }
 
 #define isSimpleBranch(n) ((n->type == TYPE_ADJECTIVE_COMPLEX) || isStdOP(n) || isStdDEF(n))
 struct node_simbranch { /* most OP_, most DEF_, ADJECTIVE_COMPLEX */
-    char *last;
+    void *last;
     char type;
     void *p1;
     void *p2;
 }
 
 struct node_opif {
-    char *last;
+    void *last;
     char type;
-    char *i;
-    char *the;
-    char *els;
+    void *i;
+    void *the;
+    void *els;
 }
 
 struct node_save {
-    char *last;
+    void *last;
     char type;
     unsigned long varID;
-    char *value;
+    void *value;
 }
