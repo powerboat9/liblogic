@@ -64,6 +64,3 @@ void freeNodeTree(struct node *n) { /* if any of the nodes have a screwed up "la
         }
     }
 }
-
-void eval(struct node *n) {
-    if
